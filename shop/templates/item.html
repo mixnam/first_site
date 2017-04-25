@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-headler">
+                    <a href="{% url 'index' %}" class="navbar-brand">Project</a>        
+            </div>
+
+            <div>
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url 'index' %}">Главная</a></li>
+                    <li><a href="{% url 'items' 1 %}">Каталог</a></li>   
+                    <li class="active"><a href="#">{{content}}</a></li>       
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {{content}}<br>Price : {{content2}}<br>Likes : {{content4}}<br>
+    
+    {% for i in content3 %}
+        {{i.rewiews}}<br>
+    {% endfor %}
+    
+    <form action="{% url 'item' content.id %}" method="post">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Submit" />
+    </form>
+
+</body>
+</html>
